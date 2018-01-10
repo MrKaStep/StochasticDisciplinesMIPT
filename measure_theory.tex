@@ -855,9 +855,13 @@
 	\end{theorem}
 	\begin{proof}$  $
 		\begin{itemize}
-			\item $ \varphi^{-1}((c, +\infty]) = \bigcup\limits_{n=1}^{\infty}{f^{-1}_{n}((c, +\infty])} \in \Sigma $\footnote{Если для данного $ x $ существует какое-то $ n $, такое что $ f_{n}(x) > c $, то $ \sup\limits_{n}f_{n}(x) > c $ и подавно.}
-			\item $ \psi^{-1}((c, +\infty]) = \bigcup\limits_{k=1}^{\infty}{ \bigcap\limits_{n=1}^{\infty}{\phi_{n}^{-1}((c + \frac{1}{k}, +\infty]) }} \in \Sigma,\ \phi_{n} := \sup\limits_{m \ge n}{ f_{m}  } $.\footnote{Т.к. в определении верхнего предела фигурирует инфимум, отделение от $ c $ добавочным слагаемым $ \frac{1}{k} $ необходимо, т.к. без него не выйдет отфильтровать случай $ \psi(x) = c $.}
+			\item $ \varphi^{-1}((c, +\infty]) = \{x \in X: \exists n\ (f_{n}(x) > c) \} =  \bigcup\limits_{n=1}^{\infty}{f^{-1}_{n}((c, +\infty])} \in \Sigma $\footnote{Если для данного $ x $ существует какое-то $ n $, такое что $ f_{n}(x) > c $, то $ \sup\limits_{n}f_{n}(x) > c $ и подавно.}
+			\item 
+				\begin{gather*}  
+					\psi^{-1}((c, +\infty]) = \{x \in X: \exists m\ \forall n \exists\ k \ge n\ (f_{k}(x) > c + \frac{1}{m}) \} =\\= \bigcup\limits_{k=1}^{\infty}{ \bigcap\limits_{n=1}^{\infty}{\bigcup\limits_{k=n}^{\infty}f^{-1}_{k}\left (\left (c + \frac{1}{k}, +\infty\right ]\right )  }} \in \Sigma
+				\end{gather*}.
 		\end{itemize}
+		Т.к. в определении верхнего предела фигурирует инфимум, отделение от $ c $ добавочным слагаемым $ \frac{1}{k} $ необходимо, т.к. без него не выйдет отфильтровать случай $ \psi(x) = c $.
 	\end{proof}
 	\begin{corollary}$  $\\
 		В тех же условиях функция $ F(x) := \lim\limits_{n\to\infty}f_{n}(x) $ измерима на области определения.\footnote{Т.к. для существования предела необходимо существование и совпадение верхнего и нижнего частичных пределов, которые измеримы по доказанной теореме.}
