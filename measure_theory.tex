@@ -790,9 +790,9 @@
 		Покажем, что каждый класс $ K $ является интервалом.\\
 		Прямолинейная связность очевидна по построению.\\
 		Пусть $ a := \inf K,\ b := \sup K $, причём $ a, b \in \Real $.\footnote{Случай бесконечной крайней точки тривиален.} Покажем, что $ a, b \not \in A $.\\
-		Если, к примеру, $ a \in A $, то $ \exists \delta > 0: (a - \delta, a + \delta) \subset A $.\\ 
+		Если, к примеру, $ a \in A $, то $ \exists \delta > 0: (a - \delta, a + \delta) \subset A $, т.к. $ A $ открыто.\\ 
 		Положим $ \delta' := \min(\delta, (b - a)/2) $, тогда $ [a - \delta', a + \delta'] \subset A $.\\
-		Известно, что $ a + \delta' \in K $. Но тогда $ K $ можно расширить, что противоречит его выбору.
+		Известно, что $ a + \delta' \in K $. Но тогда $ K $ можно расширить, а значит это не класс.
 	\end{proof}
 	\begin{corollary}$  $\\
 		Открытое подмножество в $ \Real $ — объединение не более чем счётного числа компактов.
@@ -989,7 +989,7 @@
 			\end{gather*}
 		\end{theorem}
 		\begin{proof}$  $\\
-			Для удобства записи введём обозначение $ \Delta_{X}(f, g, \eps) := \{ x \in X: |f(x) - g(x)| > \eps \} $
+			Для удобства записи введём обозначение $ \Delta_{X}(f, g, \eps) := \{ x \in X: |f(x) - g(x)| > \eps \} $.
 			\begin{itemize}
 				\item \textbf{Необходимость:} $ f_{n} \xrightarrow{\mu} f \implies $ условие Коши
 					\begin{gather*}
@@ -1010,7 +1010,7 @@
 				
 				Покажем теперь, что $ f_{n} \xrightarrow{\mu} f $ на $ X $.\\
 				В первую очередь, если $ x \not \in  \bigcup\limits_{i=m+1}^{\infty}{A_{i}} $, то:
-				\[ i, j \ge m + 1,\ i < j \implies|f_{n_{j}}(x) - f_{n_{i}}(x)| \le \sum_{k=i}^{j-1}{ |f_{n_{k+1}}(x) - f_{n_{k}} x| } < \sum_{r=m+1}^{\infty}{2^{-r}} = 2^{-m} \]
+				\[ i, j \ge m + 1,\ i < j \implies|f_{n_{j}}(x) - f_{n_{i}}(x)| \le \sum_{k=i}^{j-1}{ |f_{n_{k+1}}(x) - f_{n_{k}}(x)| } < \sum_{r=m+1}^{\infty}{2^{-r}} = 2^{-m} \]
 				Отсюда для фиксированных $ \eps > 0, \gamma > 0 $ можно подобрать такое $ N $, что:
 				\[
 				n, r \ge N \implies \mu(\Delta_{X}(f_{n}, f_{r}, \eps/2)) < \gamma/2
@@ -1084,10 +1084,10 @@
 			\textbf{Часть 1: Предположим вначале, что $ \mu(X) < \infty $.}\\
 			Положим $ n_{0} := 1 $ и выберем $ n_{k} $ так, чтобы $ \mu\left (\Delta_{X}\left (f_{n_{k}}, f, \frac{1}{k}\right )\right ) < \frac{1}{2^{k}} $.\\
 			Докажем, что $ f_{n_{k}} \xrightarrow{\text{п.в.}} f $.\\
-			При заданных $ \eps > 0, \delta > 0 $ можно подобрать $ m_{0} $ так, чтобы $ \frac{1}{m_{0}} < \eps $ и $ \frac{1}{2^{m_{0} - 1}} < \delta $.\\
+			При заданных $ \eps > 0, \delta > 0 $ можно подобрать $ m_{0} $ так, чтобы $ \frac{1}{m_{0}} < \eps $ и $ \frac{1}{2^{m_{0} - 1}} < \gamma $.\\
 			Тогда
 			\begin{gather*}
-				\forall m > m_{0}: \mu\left (\bigcup\limits_{k=m}^{\infty} \Delta_{X}(f_{n_{k}}, f, \eps)\right ) \le \mu\left (\bigcup\limits_{k=m}^{\infty} \Delta_{X}\left (f_{n_{k}}, f, \frac{1}{k}\right )\right ) \le \sum_{k=m}^{\infty}\frac{1}{2^{k}} = \frac{1}{2^{m-1}} < \delta
+				\forall m > m_{0}: \mu\left (\bigcup\limits_{k=m}^{\infty} \Delta_{X}(f_{n_{k}}, f, \eps)\right ) \le \mu\left (\bigcup\limits_{k=m}^{\infty} \Delta_{X}\left (f_{n_{k}}, f, \frac{1}{k}\right )\right ) \le \sum_{k=m}^{\infty}\frac{1}{2^{k}} = \frac{1}{2^{m-1}} < \gamma
 			\end{gather*}
 			и сходимость почти всюду следует из теоремы 17.5.\\
 			\textbf{Часть 2: Пусть теперь $ \mu(X) = \infty $:}\\
@@ -1102,32 +1102,27 @@
 		 Если $ \mu(X) < \infty $\footnote{Для сигма-конечных пространств теорема Егорова не имеет места.} и последовательность функций $ f_{n}(x) \to f(x) $ почти всюду на $ X $, то: 
 		 \[ \forall \eps > 0\ \exists \mbox{ измеримое } E_{\eps} \subseteq X: \mu(X \setminus E_{\eps}) < \eps \land \{f_{n}(x)\} \darrow[E_{\eps}] f(x) \]
 	\end{theorem}
-	\begin{proof}\footnote{Почему-то самое адекватное доказательство расписано \href{https://goo.gl/vnKrR3}{на Википедии}}\\
-		\begin{itemize}
-			\item \textbf{Дьяченко-Ульянов}:\\
-				По критерию сходимости почти всюду (т. 17.5.), для всякого $ m $ найдётся такое $ n_{m} $, что
-				\[
-					\mu\left ( G_{m} :=  \bigcup\limits_{k=n_{m}}^{\infty} \left \{ |f_{k} - f| > \frac{1}{m} \right \}  \right ) \le \frac{\eps}{2^{m}}
-				\]
-				\textit{Неформально говоря, $ G_{m} $ — множество точек, мешающих равномерной сходимости, т.е. всех таких точек, на которых $ f_{k} $ при достаточно больших $ k $ отклоняется от $ f $ более чем на $  \frac{1}{m} $. Вся идея доказательства заключается в том, что, в силу доказанных ранее утверждений, мы можем все плохие множества сделать сколь угодно малыми в совокупности.}\\
-				Положим далее $ E_{\eps} := X \setminus \bigcup\limits_{m=1}^{\infty} G_{m}  $.\\
-				\begin{gather*} \bigcup\limits_{m=1}^{\infty} G_{m} = \bigcup\limits_{m=1}^{\infty} \bigcup\limits_{k=n_{m}}^{\infty} \Delta_{X}\left (f_{k}, f, \frac{1}{m}\right ) \implies\\ X \setminus \bigcup\limits_{m=1}^{\infty} G_{m} = \bigcap\limits_{m=1}^{\infty} X \setminus G_{m} =  \bigcap\limits_{m=1}^{\infty}\bigcap\limits_{k=n_{m}}^{\infty} X \setminus \left \{ |f_{k} - f| > \frac{1}{m}  \right \} \end{gather*}
-				Таким образом, в $ E_{\eps} $ отфильтровываются точки, которые мешают равномерной сходимости.\\
-				\[ \mu(X \setminus E_{\eps}) = \mu\left (\bigcup\limits_{m=1}^{\infty}G_{m}\right ) \le \sum\limits_{m=1}^{\infty}\mu(G_{m}) < \sum\limits_{m=1}^{\infty}\frac{\eps}{2^{m}} < \eps \]
-				Пусть теперь задано некоторое $ \gamma > 0 $. Можно подобрать $ m $ так, чтобы $ \frac{1}{m} < \gamma $.\\
-				Тогда при $ k > n_{m} $:
-				\[ \forall x \in E_{\eps}: |f_{k}(x) - f(x)| \le \frac{1}{m} < \gamma \]
-				Т.к. все точки, для которых $ |f_{k}(x) - f(x)| > \frac{1}{m} $, были отброшены при построении $ E_{\eps} $.
-			\item \textbf{Википедия}:\\
-				Положим $ E_{n, k} := \bigcup\limits_{m \ge n}\left \{ |f_{m}(x) - f(x)|\ge \frac{1}{k} \right \} $. Заметим, что $ E_{n+1, k} \subseteq E_{n, k} $.\\
-				Ясно, что если $ f_{n}(x_{0}) \to f(x_{0}) $, то $ x_{0} $ не может лежать во всех $ E_{n, k} $ для некоторого $ k $.\\
-				В силу сходимости почти всюду, $ \forall k:\ \mu\left (\bigcap\limits_{n\in\Natural} E_{n, k}\right ) = 0 $\footnote{См. доказательство критерия сходимости почти всюду.}\\
-				$ \mu(X) < \infty $, значит, можно воспользоваться непрерывностью $ \mu $: $ \forall k\ \exists n_{k}:\ \mu(E_{n_{k}, k}) \le \frac{\eps}{2^{k}} $.\\
-				В точках $ x_{0} $ таких множеств последовательность $ f_{n}(x_{0}) $ слишком медленно подходит к $ f(x_{0}) $.\\
-				Обозначим множество всех плохих точек как $ B := \bigcup\limits_{k \in \Natural} E_{n_{k}, k} $.\\
-				По построению видно, что на $ E_{\eps} := X \setminus B $ сходимость равномерная.\\
-				При этом $ \mu(X \setminus E_{\eps}) \le \sum_{k \in \Natural} \mu(E_{n_{k}}, k) < \sum_{k \in \Natural} \frac{\eps}{2^{k}} = \eps $.
-			\end{itemize}
+	\begin{proof}\footnote{Есть ещё неплохое доказательство \href{https://goo.gl/vnKrR3}{на Википедии}}\\
+		По критерию сходимости почти всюду (т. 17.5.), для всякого $ m $ найдётся такое $ n_{m} $, что
+		\[
+			\mu\left ( G_{m} :=  \bigcup\limits_{k=n_{m}}^{\infty} \left \{ |f_{k} - f| > \frac{1}{m} \right \}  \right ) \le \frac{\eps}{2^{m}}
+		\]
+		\textit{Неформально говоря, $ G_{m} $ — множество точек, мешающих равномерной сходимости, т.е. всех таких точек, на которых $ f_{k} $ при достаточно больших $ k $ отклоняется от $ f $ более чем на $  \frac{1}{m} $. Вся идея доказательства заключается в том, что, в силу доказанных ранее утверждений, мы можем все плохие множества сделать сколь угодно малыми в совокупности.}\\
+		Покажем, что все точки, мешающие равномерной сходимости, будут лежать в $ \bigcup\limits_{m=1}^{\infty} G_{m} $.\\
+		Выпишем отрицание определения равномерной сходимости на $ X $:
+		\[
+		f_{n} \not \rightrightarrows f \iff \exists \eps > 0\ \forall N\ \exists n \ge N\ \exists x_{0} \in X: |f_{n}(x_{0}) - f(x_{0})| > \eps
+		\]
+		Выберем такое $ m_{0} $, что $ \eps > \frac{1}{m_{0}} $. Тогда при $ n \ge n_{m_{0}} $ имеем $ x_{0} \in G_{m_{0}} $.\\
+		Положим далее $ E_{\eps} := X \setminus \bigcup\limits_{m=1}^{\infty} G_{m}  $.\\
+		\begin{gather*} \bigcup\limits_{m=1}^{\infty} G_{m} = \bigcup\limits_{m=1}^{\infty} \bigcup\limits_{k=n_{m}}^{\infty} \Delta_{X}\left (f_{k}, f, \frac{1}{m}\right ) \implies\\ X \setminus \bigcup\limits_{m=1}^{\infty} G_{m} = \bigcap\limits_{m=1}^{\infty} X \setminus G_{m} =  \bigcap\limits_{m=1}^{\infty}\bigcap\limits_{k=n_{m}}^{\infty} X \setminus \left \{ |f_{k} - f| > \frac{1}{m}  \right \} \end{gather*}
+		Таким образом, в $ E_{\eps} $ отфильтровываются точки, которые мешают равномерной сходимости.\\
+		\[ \mu(X \setminus E_{\eps}) = \mu\left (\bigcup\limits_{m=1}^{\infty}G_{m}\right ) \le \sum\limits_{m=1}^{\infty}\mu(G_{m}) < \sum\limits_{m=1}^{\infty}\frac{\eps}{2^{m}} < \eps \]
+		Пусть теперь задано некоторое $ \gamma > 0 $. Можно подобрать $ m $ так, чтобы $ \frac{1}{m} < \gamma $.\\
+		Тогда при $ k > n_{m} $:
+		\[ \forall x \in E_{\eps}: |f_{k}(x) - f(x)| \le \frac{1}{m} < \gamma \]
+		Т.к. все точки, для которых $ |f_{k}(x) - f(x)| > \frac{1}{m} $, были отброшены при построении $ E_{\eps} $.\\
+		Значит, на $ E_{\eps} $ верно $ f_{n} \rightrightarrows f $.
 	\end{proof}
 	\begin{theorem}[Лузина\footnote{Ограниченная измеримая по Лебегу функция  на отрезке сколь угодно хорошо приближается непрерывными.\\ Стоит отметить, что теорема Лузина является важным приложением теоремы Егорова: она устанавливает взаимосвязь понятий непрерывности и измеримости на брусах в $ \Real^{n} $.}]$  $\\
 		Пусть $ f $ ограничена и измерима относительно классической меры Лебега на $ [a, b] \subset \Real^{n} $. 
