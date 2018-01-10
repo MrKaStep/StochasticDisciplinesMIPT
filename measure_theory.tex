@@ -1235,11 +1235,10 @@
 					0, & \text{если } x \not \in \bigsqcup\limits_{j=1}^{m} E_{j}\\
 				\end{cases} 
 			\]
-			или, в более краткой записи
+			в литературе также встречаются альтернативные записи:
 			\begin{gather*}
-				f_{m}: \bigsqcup\limits_{j=1}^{m} E_{j} \to \Real\\ 
-				f_{m}(x) := \sup \left \{ \frac{k}{2^{m}}: k \in \Natural,\ \frac{k}{2^{m}} \le \min(f(x), 2^{m}) \right \}\\
-				f_{m} := 2^{m} \mathbf{I}_{f^{-1}([2^{m}, +\infty))} + \sum\limits_{k=1}^{2^{2m}-1} \frac{k}{2^{m}} \mathbf{I}_{f^{-1}\left (\left [\frac{k}{2^{m}}, \frac{k+1}{2^{m}}\right )\right )}
+				f_{m}(x) := \mathbf{I}_{\bigsqcup\limits_{j=1}^{m} E_{j}}(x) \cdot \sup \left \{ \frac{k}{2^{m}}: k \in \Natural,\ \frac{k}{2^{m}} \le \min(f(x), 2^{m}) \right \}\\
+				f_{m}(x) := \left (2^{m} \mathbf{I}_{f^{-1}([2^{m}, +\infty))}(x) + \sum\limits_{k=1}^{2^{2m}-1} \frac{k}{2^{m}} \mathbf{I}_{f^{-1}\left (\left [\frac{k}{2^{m}}, \frac{k+1}{2^{m}}\right )\right )}(x)\right ) \cdot \mathbf{I}_{\bigsqcup\limits_{j=1}^{m} E_{j}}(x)
 			\end{gather*}
 			Докажем, что определённая таким образом последовательность удовлетворяет условию теоремы.
 			\begin{itemize}
