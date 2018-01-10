@@ -1183,7 +1183,7 @@
 			В силу монотонности, $ F_{n+1} \subseteq F_{n}  $, причём $ \mu(F_{1}) \le \mu(F) < \infty $.\\ 
 			Далее, $ \bigcap\limits_{n=1}^{\infty} F_{n} = \emptyset $, поскольку $ \forall x_{0} \in E: \lim\limits_{n \to \infty} g_{n}(x_{0}) \ge g(x_{0}) $.\\
 			Тогда по непрерывности меры заключаем, что $ \mu(F_{n}) \to 0 $.\\
-			Из написанного выше следует цепочка оценок:
+			Из написанного выше следует цепочка оценок:\footnote{Первое равенство следует из того, что $ F $ отличается от $ E $ только тем куском, на котором $ g(x) = 0 $.}
 			\begin{gather*}
 				\int_{E} g d\mu = \int_{F_{n}} g d\mu + \int_{F \setminus F_{n}} g d\mu \le \int_{F_{n}} g d\mu + \int_{F} (g_{n} + \eps) d\mu =\\= \sum\limits_{i=1}^{n} a_{i} \mu(F_{n} \cap E_{i}) + \int_{F} g_{n}(x) d\mu + \eps \mu(F) \le a_{n} \mu(F_{n}) + \lim\limits_{n\to\infty}\int_{E} g_{n} d\mu + \eps \mu(F)
 			\end{gather*}
