@@ -1220,7 +1220,7 @@
 			Из данных определений следует, что если $ E, A \in \Sigma,\ A \subset E, f $ — измерима на $ E $, то $ f \in L(A) \iff f(x) \mbox{I}_{A} \in L(E) $ и тогда $ \int_{A} f d\mu = \int_{E} (f \circ \mbox{I}_{A}) d\mu  $
 		\end{corollary}
 		\begin{preposition}
-			Если $ g_{n}: E \to \Real^{+} $ — такая неубывающая последовательность простых функций, что $ \lim\limits_{n \to \infty} g_{n}(x) = g(x) $, то\footnote{Основная ценность интеграла Лебега — обилие предельных теорем. В частности, с их помощью устанавливается, что пространство интегрируемых по Лебегу функций полно, что неверно для интегрируемых по Риману. Этот факт имеет фундаментальное значение для построения теории Фурье и оснований квантовой механики.} 
+			Если $ g_{n}: E \to \Real^{+} $ — такая неубывающая последовательность простых функций, что $ \lim\limits_{n \to \infty} g_{n}(x) = g(x) $ (где $ g $ не обязана быть простой), то\footnote{Основная ценность интеграла Лебега — обилие предельных теорем. В частности, с их помощью устанавливается, что пространство интегрируемых по Лебегу функций полно, что неверно для интегрируемых по Риману. Этот факт имеет фундаментальное значение для построения теории Фурье и оснований квантовой механики.} 
 			\[
 				\lim\limits_{n\to\infty} \int_{E} g_{n}(x) d\mu = \int_{E} g(x) d\mu
 			\]
@@ -1281,7 +1281,7 @@
 			\end{gather*}
 			Также используя аналогичное свойство для интеграла Лебега от простых функций и предложение 19.4. получим, что:
 			\begin{gather*}
-				\int_{E} f d\mu =    \lim_{n\to\infty} \int_{E} f_{n} d\mu =\\=
+				\int_{E} f d\mu = \lim_{n\to\infty} \int_{E} f_{n} d\mu =\\=
 				\lim\limits_{n\to\infty} \int_{A} f_{n} d\mu + \lim\limits_{n\to\infty} \int_{B} f_{n} d\mu = \int_{A} f d\mu + \int_{B} f d\mu
 			\end{gather*}
 		\end{proof}
@@ -1302,7 +1302,7 @@
 					\int_{E} g d\mu = \int_{E'} g d\mu + \int_{E \setminus E'} g d\mu = \int_{E'} g d\mu =\\= \int_{E'} f d\mu = \int_{E'} f d\mu + \int_{E \setminus E'} f d\mu = \int_{E} f d\mu
 				\end{gather*}
 				\item И снова достаточно доказать для $ f: E \to \Real^{+},\ f \in L(E),\ E \in \Sigma $.\\
-				Положим $ E_{\infty} := \{ f = \infty \} $ и выберем $ F_{\infty} \in \Sigma,\ F_{\infty} \subset E_{\infty},\ \mu(F_{\infty}) < \infty $\footnote{Пользуясь $ \sigma $-конечностью меры, пересечём $ E_{\infty} $ со всеми множествами $ X_{i} $, где $ X := \bigsqcup\limits_{i=1}^{\infty} X_{i} $, тогда $ E_{\infty} = \bigsqcup\limits_{n=1}^{\infty} E_{\infty} \cap X_{i} $ и в случае, когда $ \mu(E_{\infty}) > 0 $, хотя бы одно такое пересечение будет иметь положительную конечную меру.}.\\
+				Положим $ E_{\infty} := \{ f = +\infty \} $ и выберем $ F_{\infty} \in \Sigma,\ F_{\infty} \subset E_{\infty},\ \mu(F_{\infty}) < \infty $\footnote{Пользуясь $ \sigma $-конечностью меры, пересечём $ E_{\infty} $ со всеми множествами $ X_{i} $, где $ X := \bigsqcup\limits_{i=1}^{\infty} X_{i} $, тогда $ E_{\infty} = \bigsqcup\limits_{n=1}^{\infty} E_{\infty} \cap X_{i} $ и в случае, когда $ \mu(E_{\infty}) > 0 $, хотя бы одно такое пересечение будет иметь положительную конечную меру.}.\\
 				Рассмотрим последовательность функций из $ \mbox{SF}(f) $: $ h_{n} := n \mathbf{I}_{F_{\infty}} $.\\
 				По определению интеграла Лебега\footnote{Пользуясь соглашением $ \infty \cdot 0 = 0 $}, 
 				\[ +\infty > \int_{E} f d\mu \ge \sup\limits_{n} \int_{E} h_{n} d\mu = \sup\limits_{n} n \mathbf{I}_{F_{\infty}} = +\infty \cdot \mu(F_{\infty}) \]
@@ -1333,13 +1333,17 @@
 		\begin{proof}
 			И вновь достаточно провести доказательство для знакопостоянных функций.\\
 			Для удобства, предположим вначале, что $ f \ge 0, g \le 0 $.\\ 
+			По определению интеграла Лебега, $ \int_{E} (f + g) d\mu = \int_{E} (f + g)_{+} d\mu - \int_{E} (f + g)_{-} d\mu  $.\\
 			Разделим множество значений на $ E_{+} := \{ f + g \ge 0 \} $ и $ E_{-} := \{ f + g < 0 \} $.\\
-			По теореме 19.3. $ \int_{E} (f + g) d\mu = \int_{E_{+}} (f + g) d\mu + \int_{E_{-}} (f + g) d\mu $.\\
-			Вычислим по отдельности $ \int_{E_{+}} (f + g) d\mu,\ \int_{E_{-}} (f + g) d\mu $.\\
-			По теореме 19.3. и утверждению 19.5. получаем, что 
+			Вычислим по отдельности $ \int_{E_{+}} (f + g) d\mu,\ \int_{E_{-}} (f + g) d\mu $, поскольку эти функции знакопостоянны и весь необходимый аппарат для них разработан.\\
+			По линейности интеграла Лебега от знакопостоянных функций (т. 19.3 и утв. 19.5) получаем, что 
 			\begin{gather*}
-				\int_{E_{+}} f d \mu = \int_{E_{+}} (f + g) d\mu + \int_{E_{+}} -g d\mu = \int_{E_{+}} (f + g) d\mu - \int_{E_{+}} g d\mu\\
+				\int_{E_{+}} f d \mu = \int_{E_{+}} (f + g) d\mu + \int_{E_{+}} (-g) d\mu = \int_{E_{+}} (f + g) d\mu - \int_{E_{+}} g d\mu\\
 				-\int_{E_{-}} g d \mu = \int_{E_{-}} (-f - g) d\mu + \int_{E_{-}} f d\mu = -\int_{E_{-}} (f + g) d\mu - \int_{E_{-}} f d\mu
+			\end{gather*}
+			Значит
+			\begin{gather*}
+				\int_{E}(f + g) d\mu = \int_{E}(f + g)_{+} d\mu - \int_{E}(f + g)_{-} d\mu = \int_{E_{+}}(f + g) d\mu + \int_{E_{-}}(f + g) d\mu =\\=  \int_{E_{+}} f d\mu + \int_{E_{+}} g d\mu + \int_{E_{-}} f d\mu + \int_{E_{-}} g d\mu = \int_{E} f d\mu + \int_{E} g d\mu
 			\end{gather*}
 			Откуда видно, что $ \int_{E} (f + g) d\mu = \int_{E} f d\mu + \int_{E} g d\mu $.\\
 			Случай $ f \le 0, g \ge 0 $ рассматривается аналогично.\\
@@ -1397,7 +1401,7 @@
 		\end{proof}
 	\section{Теоремы о предельном переходе под знаком интеграла Лебега (теорема Б.Леви, лемма Фату, теорема Лебега).}
 	Будем далее полагать, что $ (X, \Sigma, \mu) $ — $ \sigma $-конечное измеримое пространство, $ E \in \Sigma $.
-	\begin{theorem}[Беппо-Леви, \href{https://goo.gl/M28P1b}{Monotone convergence theorem}]$  $\\
+	\begin{theorem}[Беппо Леви, \href{https://goo.gl/M28P1b}{Monotone convergence theorem}]$  $\\
 		Пусть $ f_{n} $ измеримы на $ E $, причём $ 0 \le f_{1},\ f_{n} \uparrow  $. Тогда 
 		\[
 			f := \lim\limits_{n\to\infty} f_{n} \implies \int_{E} f d\mu = \lim\limits_{n\to\infty} \int_{E} f_{n} d\mu
@@ -1471,10 +1475,10 @@
 		\]
 	\end{lemma}
 	\begin{proof}
-		Положим $ g_{n} := \inf\limits_{k \ge n} f_{k} $, тогда $ g_{n} \le f_{n},\ g_{n} \uparrow f $ и 
+		Положим $ g_{n} := \inf\limits_{k \ge n} f_{k} $, тогда $ g_{n} \le f_{n},\ g_{n} \uparrow f $.\\
+		Поскольку $ f_{n} \xrightarrow{\text{п.в.}} f $, она не сходится к $ f $ не на всём $ E $, а на таком $ E' \subseteq E $, что $ \mu(E \setminus E') = 0 $. Тогда
 		\[ 
-			\forall x \in E'\
-			 (\mu(E \setminus E') = 0): \lim\limits_{n\to\infty} g_{n} = \liminf\limits_{n\to\infty} f_{n} = f 
+			\forall x \in E': \lim\limits_{n\to\infty} g_{n} = \liminf\limits_{n\to\infty} f_{n} = f 
 		\]
 		Применяя теорему Беппо-Леви, получим:
 		\[
@@ -1487,7 +1491,7 @@
 	\begin{proof}
 	\end{proof}
 	\begin{theorem}[Лебега, \href{https://en.wikipedia.org/wiki/Dominated_convergence_theorem}{Dominated convergence theorem}]$  $\\
-		Пусть $ \mu $ полна, $ f_{n},\ f_{n} \xrightarrow{\text{п.в.}} f $ — такая посл-ть измеримых, что $ \exists F \in L(E)\ \forall n: |f_{n}| \le F $. Тогда
+		Пусть $ \mu $ полна, $ f_{n} \xrightarrow{\text{п.в.}} f $ — такая посл-ть измеримых, что $ \exists F \in L(E)\ \forall n: |f_{n}| \le F $. Тогда
 		\[ 
 			f(x) \in L(E),\ \int_{E} f d\mu = \lim\limits_{n\to\infty} \int_{E} f_{n} d\mu
 		\]
@@ -1527,7 +1531,7 @@
 		\[ h \ge 0 \in \mbox{SF}(f),\ h = \sum\limits_{i=1}^{n}a_{i} X_{E_{i}}: 0 \le \int_{E} f d\mu - \int_{E} h d\mu < \frac{\eps}{2} \]
 		Возьмём $ \delta := \frac{\eps}{2 \left (\max\limits_{1 \le i \le n} a_{k} + 1\right )} $, тогда если $ A \in \Sigma,\ A \subset E,\ \mu(A) < \delta $, то 
 		\begin{gather*}
-			\int_{A} f d\mu = \int_{A} f d\mu - \int_{A} h d\mu + \int_{A} h d\mu \le\\\le \int_{E} f d\mu - \int_{E} h d\mu + \int_{E} \sum_{i=1}^{n} (a_{k} \cdot \mbox{I}_{E_{i} \cap A}) d\mu <\\< \frac{\eps}{2} + \sum_{i=1}^{n} a_{k} \mu({E_{i} \cap A}) \le \frac{\eps}{2} + \max\limits_{1 \le i \le n} a_{i} \sum\limits_{k=1}^{n} \mu(E_{k} \cap A) \le \frac{\eps}{2} + \max\limits_{1 \le k \le n} a_{k} \cdot \mu(A) \le \eps
+			\int_{A} f d\mu = \int_{A} f d\mu - \int_{A} h d\mu + \int_{A} h d\mu \le\\\le \int_{E} f d\mu - \int_{E} h d\mu + \int_{E} \sum_{i=1}^{n} (a_{k} \cdot \mbox{I}_{E_{i} \cap A}) d\mu <\\< \frac{\eps}{2} + \sum_{i=1}^{n} a_{k} \mu(E_{i} \cap A) \le \frac{\eps}{2} + \max\limits_{1 \le i \le n} a_{i} \sum\limits_{k=1}^{n} \mu(E_{k} \cap A) \le \frac{\eps}{2} + \max\limits_{1 \le k \le n} a_{k} \cdot \mu(A) < \eps
 		\end{gather*}
 	\end{proof}
 	\begin{theorem}[Критерий интегрируемости по Лебегу на множествах конечной меры]$  $\\
@@ -1548,7 +1552,7 @@
 	\end{theorem}
 	\begin{proof}
 		По аддитивности интеграла Лебега
-		\[ \int_{E} f d\mu = \int_{E \setminus E_{\lambda}} f d\mu + \int_{E_{\lambda}} f d\mu \ge \int_{E_{\lambda}} f d\mu \ge \int_{E_{\lambda}|} \lambda d\mu = \lambda \cdot \mu(E_{\lambda}) \]
+		\[ \int_{E} f d\mu = \int_{E \setminus E_{\lambda}} f d\mu + \int_{E_{\lambda}} f d\mu \ge \int_{E_{\lambda}} f d\mu \ge \int_{E_{\lambda}} \lambda d\mu = \lambda \cdot \mu(E_{\lambda}) \]
 	\end{proof}
 	\begin{corollary}
 		Если $ f \ge 0 $ измерима на $ E $ такова, что $ \int_{E} f d\mu = 0 $, то $ f = 0 $ п.в. на $ E $.
