@@ -474,14 +474,14 @@
 		где второе равенство возможно в силу $ \sigma $-аддитивности $ m $ на $ S $.
 	\end{proof}
 	\begin{corollary}$  $\\
-		Если $ \nu $ — $ \sigma $-аддитивная мера на кольце $ R $ и $ A, A_{1}, \dots \in R,\ A \in \bigcup_{i=1}^{\infty}{A_{i}} $, то $ \nu(A) \le \sum_{i=1}^{\infty}{\nu(A_{i})} $.
+		Если $ \nu $ — $ \sigma $-аддитивная мера на кольце $ R $ и $ A, A_{1}, \dots \in R,\ A \subseteq \bigcup_{i=1}^{\infty}{A_{i}} $, то $ \nu(A) \le \sum_{i=1}^{\infty}{\nu(A_{i})} $.
 	\end{corollary}
 	\begin{proof}
 		Стандартная конструкция: $ B_{1} := A \cap A_{1},\ B_{n} := (A \cap A_{n}) \setminus \bigcup\limits_{i=1}^{n-1} A_{i} $.\\
 		Все эти множества лежат в $ R(S) $ в силу замкнутости относительно пересечения, дополнения и конечного объединения.\\
 		Тогда 
 		\begin{gather*} 
-			A := \bigcup\limits_{n=1}^{\infty} B_{n}\\
+			A := \bigsqcup\limits_{n=1}^{\infty} B_{n}\\
 			\nu(A) = \sum\limits_{n=1}^{\infty} \nu(B_{n}) \le \sum\limits_{n=1}^{\infty} \nu(A_{n})
 		\end{gather*}
 	\end{proof}
@@ -501,7 +501,7 @@
 		По определению инфимума, 
 		\[ \forall \eps > 0\ \forall i\ \exists \{A_{i, j}\}_{j=1}^{\infty},\ A_{i, j} \in S: A_{i} \subseteq \bigcup_{j=1}^{\infty}{A_{i, j}},\ \sum_{j=1}^{\infty}{m(A_{i, j})} < \mu^{*}(A_{i}) + \frac{\eps}{2^{i+1}} \]
 		Ясно, что $ A \subseteq \bigcup_{i=1}^{\infty}{\bigcup_{j=1}^{\infty}{A_{i, j}}} $. По счётной аддитивности меры $ m $, 
-		\[ \mu^{*}(A) \le m\left (\bigcup_{i=1}^{\infty}{\bigcup_{j=1}^{\infty}{A_{i, j}}}\right ) = \sum_{i=1}^{\infty}{\sum_{j=1}^{\infty}{m(A_{i, j})}} < \sum_{i=1}^{\infty}{\mu^{*}(A_{i})} + \eps \]
+		\[ \mu^{*}(A) \le \sum_{i=1}^{\infty}{\sum_{j=1}^{\infty}{m(A_{i, j})}} < \sum_{i=1}^{\infty}{\mu^{*}(A_{i})} + \eps \]
 		В силу произвольности $ \eps $, $ \mu^{*}(A) = \sum_{i=1}^{\infty}{\mu^{*}(A_{i})} $.
 	\end{proof}
 	\begin{corollary}
@@ -617,7 +617,7 @@
 	\section{Мера Бореля. Меры Лебега-Стилтьеса на прямой и их сигма-аддитивность.}
 	\begin{definition}
 		\textbf{Мера Бореля} — сужение меры Лебега на семейство борелевских подмножеств бруса $ [a, b] \subset \Real^{n} $.
-		Как и мера Лебега, она $ \sigma $-аддитивна, однако её область определения уже в силу существования измеримых по Лебегу неборелевских множеств. В частности, мера Бореля необязательно полна. Пополнение меры Бореля — ещё один способ конструкции меры Лебега. 
+		Как и мера Лебега, она $ \sigma $-аддитивна, однако её область определения \'{у}же в силу существования измеримых по Лебегу неборелевских множеств. В частности, мера Бореля необязательно полна. Пополнение меры Бореля — ещё один способ конструкции меры Лебега. 
 	\end{definition}
 	\begin{definition}
 		Пусть $ \phi: \overline{\Real} \to \Real $ — неубывающая непрерывная слева ограниченная функция. Далее, пусть $ S := \{[a, b)\ |\ a < b,\ a, b \in \overline{\Real} \} $ — полукольцо с единицей. Определим на $ S $ меру $ m([a, b)) := \phi(b) - \phi(a) $, лебеговское продолжение которой называется \textbf{мерой Лебега-Стилтьеса}.
@@ -638,14 +638,14 @@
 		 < \sum_{i=1}^{\infty}{m([a_{i}, b_{i}))} + \eps
 		\end{gather*}\footnote{
 			\begin{gather*} 
-				\phi(b_{i}) - \phi(c_{i}) < \frac{\eps}{2^{i+1}} \Leftrightarrow \phi(b_{i}) < \phi(c_{i}) + \frac{\eps}{2^{i+1}}\Leftrightarrow\\\Leftrightarrow \phi(b_{i}) - \phi_{a_{i}} < (\phi(c_{i}) - \phi_{a_{i}}) + \frac{\eps}{2^{i+1}} \Leftrightarrow m([a_{i}, b_{i})) < m([a_{i}, c_{i})) + \frac{\eps}{2^{i+1}} 
+				\phi(b_{i}) - \phi(c_{i}) < \frac{\eps}{2^{i+1}} \Leftrightarrow \phi(b_{i}) < \phi(c_{i}) + \frac{\eps}{2^{i+1}}\Leftrightarrow\\\Leftrightarrow \phi(b_{i}) - \phi({a_{i}}) < (\phi(c_{i}) - \phi({a_{i}})) + \frac{\eps}{2^{i+1}} \Leftrightarrow m([a_{i}, b_{i})) < m([a_{i}, c_{i})) + \frac{\eps}{2^{i+1}} 
 			\end{gather*}
 		}
 		Значит, $ m([a, b)) \le \sum_{i=1}^{\infty}{m([a_{i}, b_{i}))} $.\\
 		Если $ a = -\infty $ и $ (-\infty, b) := \bigsqcup\limits_{i=1}^{\infty}{A_{i}} $, то:
 		\begin{gather*} 
 			m((-\infty, b)) = m\left (\lim\limits_{n\to\infty}{[-n, b)}\right ) = m\left (\lim\limits_{n\to\infty}{\bigsqcup\limits_{i=1}^{\infty} A_{i} \cap [-n, b)}\right ) \le\\
-			\le  \lim\limits_{n\to\infty}{\sum\limits_{i=1}^{\infty}m(A_{k} \cap [-n, b))} \le \sum\limits_{n=1}^{\infty}m(A_{i})
+			\le  \lim\limits_{n\to\infty}{\sum\limits_{i=1}^{\infty}m(A_{i} \cap [-n, b))} \le \sum\limits_{n=1}^{\infty}m(A_{i})
 		\end{gather*}
 		где переход с первой строки на вторую допустим по доказанному для случая $ a, b \in \Real $.\\
 		Доказательство для случая $ b = +\infty $ аналогично.\\
@@ -1092,7 +1092,7 @@
 		\end{proof}
 		\begin{theorem}[Рисса]$  $\\
 			Пусть $ f_{n} \xrightarrow{\mu} f $ на $ \sigma $-конечном измеримом пространстве $ (X, \Sigma, \mu) $.\\ 
-			Тогда существует подпоследовательность $ f_{n_{i}} \xrightarrow{п.в.} f $.
+			Тогда существует подпоследовательность $ f_{n_{i}} \xrightarrow{\text{п.в.}} f $.
 		\end{theorem}
 		\begin{proof}$  $\\
 			\textbf{Часть 1: Предположим вначале, что $ \mu(X) < \infty $.}\\
@@ -1131,7 +1131,7 @@
 		Положим далее $ E_{\eps} := X \setminus \bigcup\limits_{m=1}^{\infty} G_{m}  $.\\
 		\begin{gather*} \bigcup\limits_{m=1}^{\infty} G_{m} = \bigcup\limits_{m=1}^{\infty} \bigcup\limits_{k=n_{m}}^{\infty} \Delta_{X}\left (f_{k}, f, \frac{1}{m}\right ) \implies\\ X \setminus \bigcup\limits_{m=1}^{\infty} G_{m} = \bigcap\limits_{m=1}^{\infty} X \setminus G_{m} =  \bigcap\limits_{m=1}^{\infty}\bigcap\limits_{k=n_{m}}^{\infty} X \setminus \left \{ |f_{k} - f| > \frac{1}{m}  \right \} \end{gather*}
 		Таким образом, в $ E_{\eps} $ отфильтровываются точки, которые мешают равномерной сходимости.\\
-		\[ \mu(X \setminus E_{\eps}) = \mu\left (\bigcup\limits_{m=1}^{\infty}G_{m}\right ) \le \sum\limits_{m=1}^{\infty}\mu(G_{m}) < \sum\limits_{m=1}^{\infty}\frac{\eps}{2^{m}} < \eps \]
+		\[ \mu(X \setminus E_{\eps}) = \mu\left (\bigcup\limits_{m=1}^{\infty}G_{m}\right ) \le \sum\limits_{m=1}^{\infty}\mu(G_{m}) < \sum\limits_{m=1}^{\infty}\frac{\eps}{2^{m}} = \eps \]
 		Пусть теперь задано некоторое $ \gamma > 0 $. Можно подобрать $ m $ так, чтобы $ \frac{1}{m} < \gamma $.\\
 		Тогда при $ k > n_{m} $:
 		\[ \forall x \in E_{\eps}: |f_{k}(x) - f(x)| \le \frac{1}{m} < \gamma \]
@@ -1263,7 +1263,7 @@
 						\item Если $ f_{m}(x_{0}) = \frac{k}{2^{m}} $, то $ f(x_{0}) \in \left[ \frac{k}{2^{m}}, \frac{k+1}{2^{m}} \right) = \left[ \frac{2k}{2^{m+1}}, \frac{2(k+1)}{2^{m+1}} \right) $, значит либо $ f_{m+1}(x_{0}) = \frac{2k}{2^{m+1}} = f_{m}(x_{0}) $, либо $ f_{m+1}(x_{0}) = \frac{2k+1}{2^{m+1}} > f_{m}(x_{0}) $.
 					\end{enumerate}
 				\item $ f_{n} \xrightarrow{E} f $:\\
-				Если $ f(x_{0}) < +\infty $ (иначе тривиально), тогда $ \exists m_{0}: f(x_{0}) \in \bigsqcup\limits_{n=1}^{m_{0}} E_{n},\ f(x_{0}) < 2^{m_{0}} $.\\ 
+				Если $ f(x_{0}) < +\infty $ (иначе тривиально), тогда $ \exists m_{0}: x_{0} \in \bigsqcup\limits_{n=1}^{m_{0}} E_{n},\ f(x_{0}) < 2^{m_{0}} $.\\ 
 				Потому $ \forall n \ge m_{0} $ имеем $ |f_{n}(x_{0}) - f(x_{0})| \le 2^{-n} $.
 			\end{itemize}
 		\end{proof}
