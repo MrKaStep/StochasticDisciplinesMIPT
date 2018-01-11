@@ -856,10 +856,9 @@
 	\begin{proof}$  $
 		\begin{itemize}
 			\item $ \varphi^{-1}((c, +\infty]) = \{x \in X: \exists n\ (f_{n}(x) > c) \} =  \bigcup\limits_{n=1}^{\infty}{f^{-1}_{n}((c, +\infty])} \in \Sigma $\footnote{Если для данного $ x $ существует какое-то $ n $, такое что $ f_{n}(x) > c $, то $ \sup\limits_{n}f_{n}(x) > c $ и подавно.}
-			\item 
-				\begin{gather*}  
+			\item \begin{gather*}  
 					\psi^{-1}((c, +\infty]) = \{x \in X: \exists m\ \forall n \exists\ k \ge n\ (f_{k}(x) > c + \frac{1}{m}) \} =\\= \bigcup\limits_{k=1}^{\infty}{ \bigcap\limits_{n=1}^{\infty}{\bigcup\limits_{k=n}^{\infty}f^{-1}_{k}\left (\left (c + \frac{1}{k}, +\infty\right ]\right )  }} \in \Sigma
-				\end{gather*}.
+				\end{gather*}
 		\end{itemize}
 		Т.к. в определении верхнего предела фигурирует инфимум, отделение от $ c $ добавочным слагаемым $ \frac{1}{k} $ необходимо, т.к. без него не выйдет отфильтровать случай $ \psi(x) = c $.
 	\end{proof}
@@ -937,8 +936,11 @@
 		\end{theorem}
 		\begin{proof}
 			Пусть $ f_{n}(x) \xrightarrow{\mu} f(x),\ f_{n}(x) \xrightarrow{\mu} g(x) $. Тогда\footnote{Полезно нарисовать картинку.}:
-			\[ \{x \in X\ |\ |f(x) - g(x)| > \eps \} \subseteq \{x \in X\ |\ |f(x) - f_{n}(x)| >  \eps/2 \} \cup \{x \in X\ |\ |g(x) - f_{n}(x)| > \eps/2 \} \]
-			Значит, $ \mu(\{x \in X\ |\ |f(x) - g(x)| > 0 \}) = 0  $.
+			\begin{gather*} 
+				\forall \eps > 0: \{x \in X : |f(x) - g(x)| > \eps \} \subseteq \{x \in X: |f(x) - f_{n}(x)| >  \eps/2 \} \cup \{x \in X: |g(x) - f_{n}(x)| > \eps/2 \} \implies\\
+				\implies  \forall \eps > 0\ \forall \gamma > 0: \mu(\{|f - g| > \eps \}) < \frac{\gamma}{2} + \frac{\gamma}{2} < \gamma
+			\end{gather*} 
+			Значит, $ \mu(\{x \in X: |f(x) - g(x)| > 0 \}) = 0  $.
 		\end{proof}
 		\begin{theorem}[Предел по мере коммутирует со сложением]$  $\\
 			Если $ f_{n} \xrightarrow{\mu} f,\ g_{n} \xrightarrow{\mu} g $, то $ f_{n} + g_{n} \xrightarrow{\mu} f + g $.
@@ -962,9 +964,17 @@
 			По равномерной непрерывности $ g $ на $ K' $: 
 			\[ \exists \delta > 0\ \forall x, y \in K': |x - y| < \delta \implies |g(x) - g(y)| < \eps \]
 			По определению сходимости по мере,
-			\[ f_{n} \xrightarrow{\mu} f \implies \exists N\ \forall n > N: \mu(B_{n}) := \mu(\{ x \in X\ |\ |f_{n}(x) - f(x)| \ge \min(\rho/2, \delta)+ \}) < \gamma/2 \]
+			\[ f_{n} \xrightarrow{\mu} f \implies \exists N\ \forall n > N: \mu(B_{n}) := \mu(\{ x \in X\ |\ |f_{n}(x) - f(x)| \ge \min(\rho/2, \delta) \}) < \gamma/2 \]
 			Тогда $ \mu(A \cup B_{n}) < \gamma $, а 
-			\[ \forall x \in X \setminus (A \cup B_{n}): f(x) \in K \subset K',\ f_{n}(x) \in K',\ |f_{n}(x) - f(x)| < \delta \] откуда $ |g(f_{n}(x)) - g(f(x))| < \eps $.
+			\begin{gather*} 
+				\forall n \ge N\ \forall x \in X \setminus (A \cup B_{n}): f(x) \in K \subset K',\ f_{n}(x) \in K',\ |f_{n}(x) - f(x)| < \delta \implies\\\implies
+				|g(f_{n}(x)) - g(f(x))| < \eps 
+			\end{gather*}
+			 Значит, 
+			 \begin{gather*}
+				 \forall \eps > 0\ \forall \gamma > 0\ \exists N\ \forall n > N: \mu(\{ |g \circ f_{n} - g \circ f| > \eps \}) \le \gamma \implies\\
+				 \implies g \circ f_{n} \xrightarrow{\mu} g \circ f
+			 \end{gather*}
 		\end{proof}
 		\begin{corollary}
 			Если $ \mu(X) < \infty $ и $ f_{n} \xrightarrow{\mu} f $, то $ f^{2}_{n} \to f^{2} $, а при $ f, f_{n} \neq 0 $ и $ \frac{1}{f_{n}} \xrightarrow{\mu} \frac{1}{f} $.\\
@@ -1175,8 +1185,8 @@
 			$ X = A \sqcup B \implies \int_{X} f d\mu = \int_{A} f d\mu + \int_{B} f d\mu  $
 		\end{preposition}
 		\begin{theorem}
-			Пусть $ (X, \Sigma, \mu) $ — $ \sigma $-конечное измеримое пространство и $ E \in M $.\\
-			Тогда если $ g_{n}: E \to \Real^{+} $ — неубывающая последовательность простых функций и\\ $ g: E \to \Real^{+},\ g(x) := \sum\limits_{i=1}^{n} a_{i} \mathbf{I}_{E_{i}}(x),\ 0 < a_{1} < \dots < a_{n} ,\ \bigsqcup\limits_{i=1}^{n} E_{i} \subseteq E,\ \mu(E_{i}) < \infty $ — также простая, причём $ \forall x_{0} \in E: \lim\limits_{n \to \infty} g_{n}(x_{0}) \ge g(x_{0}) $, то 
+			Пусть $ (X, \Sigma, \mu) $ — $ \sigma $-конечное измеримое пространство и $ E \in \Sigma $.\\
+			Тогда если $ g_{n}: E \to \Real^{+} $ — неубывающая последовательность простых функций и\\ \[ g: E \to \Real^{+},\ g(x) := \sum\limits_{i=1}^{n} a_{i} \mathbf{I}_{E_{i}}(x),\ 0 < a_{1} < \dots < a_{n} ,\ \bigsqcup\limits_{i=1}^{n} E_{i} \subseteq E,\ \mu(E_{i}) < \infty \] — также простая функция, причём $ \forall x_{0} \in E: \lim\limits_{n \to \infty} g_{n}(x_{0}) \ge g(x_{0}) $, то 
 			\[ \lim\limits_{n \to \infty} \int_{E} g_{n}(x) d\mu \ge \int_{E} g(x) d\mu \]
 		\end{theorem}
 		\begin{proof}
