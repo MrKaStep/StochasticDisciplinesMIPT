@@ -1527,7 +1527,7 @@
 		\[ h \ge 0 \in \mbox{SF}(f),\ h = \sum\limits_{i=1}^{n}a_{i} X_{E_{i}}: 0 \le \int_{E} f d\mu - \int_{E} h d\mu < \frac{\eps}{2} \]
 		Возьмём $ \delta := \frac{\eps}{2 \left (\max\limits_{1 \le i \le n} a_{k} + 1\right )} $, тогда если $ A \in \Sigma,\ A \subset E,\ \mu(A) < \delta $, то 
 		\begin{gather*}
-			\int_{A} f d\mu = \int_{A} f d\mu - \int_{A} h d\mu + \int_{A} h d\mu \le\\\le \int_{E} f d\mu - \int_{E} h d\mu + \int_{E} \sum_{i=1}^{n} (a_{k} \cdot \mbox{I}_{E_{i} \cap A}) d\mu <\\< \frac{\eps}{2} + \sum_{i=1}^{n} a_{k} \mu(\mbox{I}_{E_{i} \cap A}) \le \frac{\eps}{2} + \max\limits_{1 \le i \le n} a_{i} \sum\limits_{k=1}^{n} \mu(E_{k} \cap A) \le \frac{\eps}{2} + \max\limits_{1 \le k \le n} a_{k} \cdot \mu(A) \le \eps
+			\int_{A} f d\mu = \int_{A} f d\mu - \int_{A} h d\mu + \int_{A} h d\mu \le\\\le \int_{E} f d\mu - \int_{E} h d\mu + \int_{E} \sum_{i=1}^{n} (a_{k} \cdot \mbox{I}_{E_{i} \cap A}) d\mu <\\< \frac{\eps}{2} + \sum_{i=1}^{n} a_{k} \mu({E_{i} \cap A}) \le \frac{\eps}{2} + \max\limits_{1 \le i \le n} a_{i} \sum\limits_{k=1}^{n} \mu(E_{k} \cap A) \le \frac{\eps}{2} + \max\limits_{1 \le k \le n} a_{k} \cdot \mu(A) \le \eps
 		\end{gather*}
 	\end{proof}
 	\begin{theorem}[Критерий интегрируемости по Лебегу на множествах конечной меры]$  $\\
